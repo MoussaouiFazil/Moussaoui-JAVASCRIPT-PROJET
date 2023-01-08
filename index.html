@@ -1,27 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to the rift</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <title>Accueil Portefolio</title>
+    <style>
+      /* CSS */
+      body {
+        background-color: #f1f1f1;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .logo {
+        height: 100px;
+        width: 100px;
+        background-image: url("logo.png");
+        background-size: contain;
+        margin: 20px auto;
+      }
+      .menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #333;
+        color: #fff;
+        padding: 10px 0;
+      }
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      .menu a:hover {
+        text-decoration: underline;
+      }
+      .hero {
+        background-image: url("hero.jpg");
+        background-size: cover;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+      .hero h1 {
+        font-size: 48px;
+      }
+      .hero p {
+        font-size: 24px;
+        max-width: 800px;
+        margin: 20px auto;
+      }
+    </style>
   </head>
   <body>
-    <header>
-      <!-- Contenu de l'en-tête -->
-      BIENVENUE AGENT SUR MON PORTFOLIO
-    </header>
-    <nav> 
-      <!-- Navigation -->
-      Recherche
-    </nav>
-    <main>
-      <!-- Contenu principal de la page -->
-
-    </main>
-    <footer>
-      <!-- Pied de page -->
-    </footer>
+    <div class="container">
+      <div class="logo"></div>
+      <nav class="menu">
+        <a href="#">Accueil</a>
+        <a href="#">Mes travaux</a>
+        <a href="#">Support</a>
+        <a href="#">Où me contacter</a>
+        <body>
+          <h1 id="card">Element color</h1>
+          <button id="changeColorButton">Passer en mode sombre</button>
+          <div class="card">Année 1</div>
+          <div class="card">Année 2</div>
+          <div class="card">Année 3</div>
+          <div class="card">Année 4</div>
+          <div class="card">Année 5</div>
+        </body>
+      </nav>
+      <div class="hero">
+        <h1>Bienvenue sur mon site</h1>
+        <p>
+          Découvrez mes derniers travaux ainsi que les évenements à venir me
+          concernant
+        </p>
+      </div>
+    </div>
+    <script>
+      // Animation JS
+      var button = document.querySelector("#changeColorButton");
+      var colors = ["#efefef", "#000000"];
+      var currentColorIndex = 0;
+      button.addEventListener("click", function () {
+        document.body.style.backgroundColor = colors[currentColorIndex];
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+      });
+      var image = document.querySelector(".hero");
+      var angle = 0;
+      setInterval(function () {
+        image.style.transform = "rotate(" + angle + "deg)";
+        angle += 0.5;
+      }, 20);
+      var cards = document.querySelectorAll(".card");
+      for (var i = 0; i < cards.length; i++) {
+        console.log(cards[i].textContent);
+      }
+      var titre = document.querySelector('#card');
+      titre.style.color = 'red';
+    </script>
   </body>
 </html>

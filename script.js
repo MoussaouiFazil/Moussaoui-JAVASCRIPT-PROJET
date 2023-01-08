@@ -1,25 +1,26 @@
-console.log("tout fonctionne");
+const titleElement = document.querySelector('h1');
+const buttonElement = document.querySelector('button');
 
-const h1 = document.querySelector("h1");
+let colorIndex = 0;
+const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
-let color = "red"
+buttonElement.addEventListener('click', function() {
+  titleElement.style.color = colors[colorIndex];
+  colorIndex = (colorIndex + 1) % colors.length;
+});
 
-color = "blue"
+const headerElement = document.querySelector('header');
+const mainElement = document.querySelector('main');
 
-h1.style.color = "Yellow";
-//document.querySelector("h1").style.color = "red" (c'est le meme chose qu'au dessus)
+let headerHeight = headerElement.offsetHeight;
 
-// Selecteurs
-const button = document.querySelector('#button');
-
-// le listener
-button.addEventListener('click', function () {
-    
-    if (h1.style.color === "green")  {
-         h1.style.color = "black";
-    }   else {
-        h1.style.color = "green";
-    }    
-
-
-})
+window.addEventListener('scroll', function() {
+  const scrollPosition = window.scrollY;
+  if (scrollPosition > headerHeight) {
+    headerElement.classList.add('sticky');
+    mainElement.style.paddingTop = `${headerHeight}px`;
+  } else {
+    headerElement.classList.remove('sticky');
+    mainElement.style.paddingTop = 0;
+  }
+});
